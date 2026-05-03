@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Valle</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 15px;
+            background-color: #1a1a1a;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .hero {
+            padding: 20px 20px;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Botón flotante WhatsApp */
+        .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background-color: #25D366;
+    border-radius: 50%;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    transition: transform 0.2s ease;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    
+}
+
+.services {
+    padding: 30px 20px;
+}
+
+.services h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+
+}
+
+/* Contenedor */
+.services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Tarjetas */
+.card {
+    width: 100%;
+
+    padding: 15px;
+    border-radius: 8px;
+
+    background-color: #1f1f1f;
+
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+/* Hover */
+.card:hover {
+    transform: translateX(0) translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 0;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.card:hover h3 {
+    color: #25D366;
+}
+
+/* Animación general (fade) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación lateral (cards) */
+.slide-in {
+    width: 100%;
+    max-width: 500px;
+
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.pricing {
+    padding: 30px 20px;
+}
+
+.pricing h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Contenedor */
+.pricing-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Tarjetas de precio */
+.price-card {
+    width: 100%;
+
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+/* Hover */
+.price-card:hover {
+    transform: translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.price-card h3 {
+    margin: 0 0 10px 0;
+}
+
+.price {
+    font-size: 24px;
+    color: #25D366;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.price-card ul {
+    padding-left: 18px;
+    margin: 0;
+    color: #ccc;
+}
+
+.price-card li {
+    margin-bottom: 5px;
+}
+
+.price-card:hover h3 {
+    color: #25D366;
+}
+
+.process {
+    padding: 30px 20px;
+}
+
+.process h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Contenedor */
+.process-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Pasos */
+.step {
+    width: 100%;
+    max-width: 500px;
+
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+/* Hover */
+.step:hover {
+    transform: translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.step h3 {
+    margin: 0 0 8px 0;
+}
+
+.step p {
+    margin: 0;
+    color: #ccc;
+}
+
+.step:hover h3 {
+    color: #25D366;
+}
+
+/* Mapa */
+.map-container {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 500px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Texto mapa */
+.map-text {
+    color: #ccc;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.about {
+    padding: 30px 20px;
+}
+
+.about h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Contenedor */
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Cards */
+.about-card {
+    width: 100%;
+    max-width: 500px;
+
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+/* Hover */
+.about-card:hover {
+    transform: translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.about-card h3 {
+    margin-bottom: 10px;
+}
+
+.about-card p {
+    color: #ccc;
+}
+
+.about-card ul {
+    padding-left: 18px;
+    color: #ccc;
+}
+
+.about-card li {
+    margin-bottom: 5px;
+}
+
+/* Hover verde coherente */
+.about-card:hover h3 {
+    color: #25D366;
+}
+
+.card,
+.price-card,
+.step,
+.about-card {
+    border: 1px solid transparent;
+}
+
+.card:hover,
+.price-card:hover,
+.step:hover,
+.about-card:hover { 
+    border-color: #25D366;
+}
+
+.contact {
+    padding: 30px 20px;
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+
+    background-color: #1f1f1f;
+    color: white;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #25D366;
+}
+
+.contact-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+
+    background-color: #25D366;
+    color: black;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    background-color: #1ebe5d;
+}
+
+.contact-alt {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.portfolio {
+    padding: 30px 20px;
+}
+
+.portfolio h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.portfolio-card {
+    width: 100%;
+    max-width: 500px;
+
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+
+    text-align: left;
+
+    border: 1px solid transparent;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    border-color: #25D366;
+}
+
+.portfolio-card h3 {
+    margin-bottom: 8px;
+}
+
+.portfolio-card p {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.portfolio-card a {
+    color: #25D366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Toast superior */
+.toast {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+
+    background-color: #25D366;
+    color: white;
+
+    text-align: center;
+    padding: 15px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    z-index: 9999;
+
+    transition: top 0.5s ease;
+}
+
+/* Estado visible */
+.toast.show {
+    top: 0;
+}
+
+.important {
+    padding: 30px 20px;
+}
+
+.important h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.important-container {
+    display: flex;
+    justify-content: center;
+}
+
+.important-card {
+    width: 100%;
+    max-width: 500px;
+
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+
+    text-align: left;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+.important-card ul {
+    padding-left: 18px;
+    margin: 0;
+    color: #ccc;
+}
+
+.important-card li {
+    margin-bottom: 8px;
+}
+
+/* Hover consistente */
+.important-card:hover {
+    transform: translateY(-5px);
+    background-color: #262626;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+.important-card:hover li {
+    color: #25D366;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="toast" class="toast">
+    Mensaje enviado correctamente. Te responderé pronto.
+</div>    
+
+<header class="fade-in">
+    <h1>Jeremy Valle</h1>
+</header>
+
+<section class="hero fade-in">
+    <h2>Soporte técnico y formateo de computadores en Antofagasta</h2>
+    <p>Servicio confiable, rápido y claro. Instalación de Windows 10, Office, respaldo de datos y configuración básica.</p>
+</section>
+
+<section class="services fade-in">
+    <h2>Servicios</h2>
+
+<div class="services-container">
+
+    <div class="slide-in">
+        <div class="card">
+            <h3>Formateo completo</h3>
+            <p>Eliminación de archivos innecesarios y limpieza total del sistema.</p>
+        </div>
+    </div>
+
+    <div class="slide-in">
+        <div class="card">
+            <h3>Instalación de Windows 10</h3>
+            <p>Instalación limpia y configuración inicial del sistema operativo.</p>
+        </div>
+    </div>
+
+    <div class="slide-in">
+        <div class="card">
+            <h3>Instalación de Office</h3>
+            <p>Incluye Word, Excel, PowerPoint y más, listos para usar.</p>
+        </div>
+    </div>
+
+    <div class="slide-in">
+        <div class="card">
+            <h3>Respaldo de datos</h3>
+            <p>Protección de archivos importantes antes del formateo (+ $5.000).</p>
+        </div>
+    </div>
+
+    <div class="slide-in">
+    <div class="card">
+        <h3>Desarrollo de sitios web básicos</h3>
+        <p>Creación de páginas web simples, claras y funcionales para negocios o proyectos personales.</p>
+    </div>
+</div>
+
+</div>
+</section>
+
+<section class="pricing fade-in">
+    <h2>Precios</h2>
+
+    <div class="pricing-container">
+
+        <div class="price-card slide-in">
+            <h3>Servicio básico</h3>
+            <p class="price">$15.000</p>
+            <ul>
+                <li>Formateo completo</li>
+                <li>Instalación de Windows 10</li>
+                <li>Instalación de Office</li>
+            </ul>
+        </div>
+
+        <div class="price-card slide-in">
+            <h3>Servicio completo</h3>
+            <p class="price">$20.000</p>
+            <ul>
+                <li>Todo lo del servicio básico + Respaldo de datos</li>
+            
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="process fade-in">
+    <h2>¿Cómo funciona?</h2>
+
+    <div class="process-container">
+
+        <div class="step slide-in">
+            <h3>1. Contacto</h3>
+            <p>Me escribes por WhatsApp o correo para coordinar disponibilidad y resolver dudas.</p>
+        </div>
+
+        <div class="step slide-in">
+            <h3>2. Entrega del equipo</h3>
+            <p>Traes el computador a mi domicilio en Antofagasta, ubicado en Av. Argentina 1688 (Edificio Salvador Reyes).</p>
+        </div>
+
+        <div class="step slide-in">
+            <h3>3. Revisión inicial</h3>
+            <p>Reviso el equipo para confirmar compatibilidad y detalles. Este proceso toma unos minutos mientras esperas.</p>
+        </div>
+
+        <div class="step slide-in">
+            <h3>4. Trabajo</h3>
+            <p>Realizo el formateo, instalación de Windows, Office y configuración. Mantengo comunicación durante todo el proceso.</p>
+        </div>
+
+        <div class="step slide-in">
+            <h3>5. Entrega final</h3>
+            <p>El equipo estará listo normalmente al día siguiente para su retiro.</p>
+        </div>
+
+    </div>
+
+    <div class="map-container fade-in">
+        <p class="map-text">📍 Av. Argentina 1688, Antofagasta (Edificio Salvador Reyes)</p>
+
+        <iframe 
+            src="https://www.google.com/maps?q=Avenida+Argentina+1688+Antofagasta&output=embed"
+            width="100%" 
+            height="250" 
+            style="border:0; border-radius:8px;"
+            loading="lazy">
+        </iframe>
+    </div>
+
+</section>
+
+<section class="about fade-in">
+    <h2>Sobre mí</h2>
+
+    <div class="about-container">
+
+        <div class="about-card slide-in">
+            <p>
+                Soy Técnico de Nivel Superior en Informática egresado de IACC, actualmente cursando Ingeniería en Informática.
+                Tengo experiencia en soporte técnico a nivel usuario, formateo de computadores e instalación de sistemas,
+                además de conocimientos en desarrollo web básico.
+            </p>
+
+            <p>
+                Me caracterizo por ser responsable, claro al comunicarme y con buena disposición para aprender.
+                Actualmente busco seguir desarrollándome en el área tecnológica, adquiriendo experiencia práctica
+                y mejorando continuamente mis habilidades.
+            </p>
+        </div>
+
+        <div class="about-card slide-in">
+            <h3>Conocimientos</h3>
+            <ul>
+                <li>Soporte técnico a nivel usuario</li>
+                <li>Formateo e instalación de Windows 10</li>
+                <li>Instalación de software (Office y programas básicos)</li>
+                <li>Respaldo y recuperación básica de datos</li>
+                <li>Desarrollo web básico (HTML y CSS)</li>
+                <li>Programación básica en Python</li>
+                <li>Uso de Visual Studio Code</li>
+                <li>Herramientas de apoyo como ChatGPT y GitHub Copilot</li>
+                <li>Inglés avanzado (oral y escrito)</li>
+            </ul>
+        </div>
+
+        <div class="about-card slide-in">
+            <h3>Experiencia</h3>
+            <ul>
+                <li>Trabajo independiente realizando formateo, instalación y respaldo de equipos</li>
+                <li>Desarrollo de sitio web informativo para una empresa (prosigna.cl)</li>
+                <li>Experiencia académica en bases de datos y análisis de datos con Python</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="portfolio fade-in">
+    <h2>Trabajos realizados</h2>
+
+    <div class="portfolio-container">
+
+        <div class="portfolio-card slide-in">
+            <h3>Sitio web informativo</h3>
+            <p>Desarrollo de sitio web básico para una empresa, enfocado en claridad, diseño simple y funcionalidad.</p>
+
+            <a href="https://prosigna.cl" target="_blank">Ver sitio →</a>
+        </div>
+
+    <div class="portfolio-card slide-in">
+    <h3>Landing page de servicios técnicos (proyecto personal)</h3>
+    <p>
+        Desarrollo de esta misma página web como proyecto personal, enfocada en ofrecer servicios técnicos.
+        Diseño claro, estructura organizada y uso de HTML, CSS y animaciones para mejorar la experiencia del usuario.
+    </p>
+
+    <a href="#">Sitio actual →</a>
+</div>
+
+    </div>
+</section>
+
+<section class="important fade-in">
+    <h2>Importante antes de solicitar</h2>
+
+    <div class="important-container">
+
+        <div class="important-card slide-in">
+            <ul>
+                <li>El equipo debe encender y funcionar correctamente</li>
+                <li>Solo se realiza formateo e instalación de sistema</li>
+                <li>No se realizan diagnósticos ni reparaciones</li>
+                <li>No se trabaja con equipos que no inician</li>
+                <li>No incluye servicio a domicilio</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact fade-in">
+    <h2>Contacto</h2>
+
+    <div class="contact-container">
+
+        <form id="contact-form" class="contact-form">
+
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+
+            <input type="email" name="email" placeholder="Tu correo" required>
+
+            <input 
+             type="tel" 
+            name="telefono" 
+            placeholder="Teléfono (opcional) Ej: +569 1234 5678"
+            title="Puedes ingresar tu número para contacto por WhatsApp (opcional)">
+
+            <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+            <button type="submit">Enviar mensaje</button>
+
+        </form>
+
+        <p class="contact-alt">
+            O contáctame directamente por WhatsApp usando el botón en la esquina inferior derecha.
+        </p>
+
+    </div>
+</section>
+
+<!-- Botón flotante -->
+<a class="whatsapp-float" href="https://wa.me/56983780472" target="_blank" aria-label="Contactar por WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<script>
+    const elements = document.querySelectorAll('.fade-in, .slide-in');
+
+    window.addEventListener('load', () => {
+        elements.forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('show');
+            }, index * 150);
+        });
+    });
+</script>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+        const response = await fetch("https://formspree.io/f/mqewoloo", {
+            method: "POST",
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+// Ocultarlo después de 10 segundos
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 10000);
+            form.reset();
+        } else {
+            alert("Hubo un error al enviar el mensaje.");
+        }
+    } catch (error) {
+        alert("Error de conexión.");
+    }
+});
+</script>
+
+</body> 
+</html>
